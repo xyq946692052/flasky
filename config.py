@@ -5,7 +5,8 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    FLASKy_MAIL_SUBJECT_PRRFIX = '[flasky]'
+   
+    FLASKY_MAIL_SUBJECT_PREFIX = '[flasky]'
     FLASKY_MAIL_SENDER = '13560794393@163.com'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
@@ -40,4 +41,5 @@ config = {
 }
     
                                   
-     
+    
+ 

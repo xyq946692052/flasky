@@ -8,17 +8,21 @@ from ..email import send_mail
 
 @auth.before_app_request
 def before_request():
-    if current_user.is_authenticated() \
+    if current_user.is_authenticated \
             and not current_user.confirmed \
-            and request.endpoint[:5] != 'auth.':
+            and request.endpoint[:5] != 'auth.'\
             and request.endpoint != 'static':
-        return redirect(url_for('auth.unconfirmed'))
+       # return redirect(url_for('auth.unconfirmed'))
+        return redirect(url_for('main.index'))
 
 @auth.route('/unconfirmed')
 def unconfirmed():
-    if current_user.is_anonymous() or current_user.confirmed:
+    print '-------------', not current_user.is_anonymous
+    print '+++++++++++++',not current_user.confirmed
+    if not current_user.is_anonymous or not current_user.confirmed:   #forged can send email success
         return redirect(url_for('main.index'))
     return render_template('auth/unconfirmed.html')
+   
 
 
 @auth.route('/register',methods=['GET','POST'])
@@ -30,9 +34,8 @@ def register():
                     password=form.password.data)
         db.session.add(user)
         db.session.commit()
-        token = user.generate_confirmation_token()
-        send_mail(user.email,'Confirm Your Account',
-                  'auth/email/confirm',user=user,token=token)
+        #token = user.generate_confirmation_token()
+        #send_mail(user.email,'Confirm Your Account','auth/email/confirm',user=user,token=token)
         flash('A confirmation email has been sent to you by email..')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html',form=form)

@@ -43,11 +43,12 @@ class User(UserMixin,db.Model):
         return User.query.get(user_id)
 
     def generate_confirmation_token(self,expiration=3600):
-        s=Serializer(current_app.config['SECRET_KEY'],expiraton)
+        s=Serializer(current_app.config['SECRET_KEY'],expiration)
         return s.dumps({'confirm':self.id})
 
     def confirm(self,token):
         s=Serializer(current_app.config['SECRET_KEY'])
+       
         try:
             data = s.loads(token)
         except:
