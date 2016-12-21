@@ -7,7 +7,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
    
     FLASKY_MAIL_SUBJECT_PREFIX = '[flasky]'
-    FLASKY_MAIL_SENDER = '13560794393@163.com'
+    FLASKY_MAIL_SENDER = '946692052@qq.com'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
     @staticmethod
@@ -16,9 +16,10 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    MAIL_SERVER = 'smtp.163.com'
-    MAIL_PORT = 587
-    MAIL_USER_TLS = True
+    MAIL_SERVER = 'smtp.qq.com'
+    MAIL_PORT = '25'
+    MAIL_USE_TLS = True
+    
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \

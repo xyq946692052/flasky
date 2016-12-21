@@ -12,7 +12,9 @@
 <hr/>
 <p>
     New user?
-    <a href="{{url_for('auth.register')}}">Click here to register</a>
+    <a href="{{url_for('auth.register')}}">Click here to register</a><br/>
+    Forget Password?
+    <a href="{{url_for('auth.password_reset_request')}}">Click here to reset password</a>
 </p>
 </div>
 {% endblock %}

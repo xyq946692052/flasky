@@ -14,13 +14,14 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
+                <li><a href="/"><b>Home</b></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.logout') }}">Sign Out</a></li>
+                <li><a href="{{ url_for('auth.change_password')}}"><b>Change Password</b></a></li>
+                <li><a href="{{ url_for('auth.logout') }}"><b>Sign Out</b></a></li>
                 {% else %}
-                <li><a href="{{ url_for('auth.login') }}">Sign In</a></li>
+	        <li><a href="{{ url_for('auth.login') }}"><b>Sign In</b></a></li>
                 {% endif %}
             </ul>
         </div>
