@@ -1,6 +1,6 @@
 import os
 from app import create_app,db
-from app.models import User,Role
+from app.models import User,Role,Permission
 from flask_script import Manager,Shell
 from flask_migrate import Migrate,MigrateCommand
 
@@ -22,5 +22,5 @@ def test():
     unittest.TextTestRunner(verbosity=2).run(tests)
 
 if __name__ == '__main__':
-    #manager.run()
-    app.run(debug=True,port=8898)
+    manager.run()
+    #app.run(debug=True)
