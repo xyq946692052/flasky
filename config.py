@@ -23,7 +23,7 @@ class DevelopmentConfig(Config):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              'mysql://xyq:xyq@localhost/dvpdb'
+                              'mysql://xyq:xyq@localhost/devdb'
 
 class TestingConfig(Config):
     TESTING = True
@@ -32,7 +32,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-                              'mysql://xyq:xyq@localhost/prtdb'
+                              'mysql://xyq:xyq@localhost/livedb'
 
 config = {
     'development': DevelopmentConfig,
